@@ -3,6 +3,13 @@ require("dotenv").config();
 const pool = require("./pg");
 const cron = require("node-cron");
 const { enwords } = require("./words");
+const express = require("express");
+
+const app = express();
+
+app.get("/", (req, res) => {
+    res.send("Server is live!");
+})
 
 
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -31,7 +38,10 @@ bot.start((ctx) => {
     bot.action("lang_en", async (ctx) => {
         await ctx.editMessageReplyMarkup(null);
         const user = ctx.from;
-        const res = await pool.query(`INSERT INTO users (telegram_id, chosen_lang) VALUES ($1,$2)`, [user.id, "en"]);
+        const userFind = await pool.query("SELECT * FROM users WHERE telegram_id = $1", [user.id]);
+        if (userFind.rows.length === 0) {
+            const res = await pool.query(`INSERT INTO users (telegram_id, chosen_lang) VALUES ($1,$2)`, [user.id, "en"]);
+        }
         ctx.reply(
             `🎉 <b>Ajoyib!</b>\n\n<b>Til o‘rgan bot</b> haqida qisqacha:\n\n📚 Har kuni siz tanlagan tilda <b>5</b>, <b>10</b> yoki <b>15 ta yangi so‘z</b> yuboriladi.\n\n🧠 Har bir so‘zga <i>tavsif</i> va <i>tarjima</i> birga beriladi.\n\n🔁 Bu usul orqali siz <b>doimiy va intizomli o‘rganish</b> orqali so‘z boyligingizni tezda oshirasiz.\n\n🚀 Keling, birinchi kuningizni boshlaymiz!\n\n⚠️ /settings buyrug'i orqali sozlamalarni o'zgartirishingiz mumkin (so'zlarni tashlash vaqti, so'z limiti va tilni).`,
             {
@@ -218,3 +228,7 @@ process.once("SIGINT", () => bot.stop("SIGINT"));
 process.once("SIGTERM", () => bot.stop("SIGTERM"));
 
 console.log("Bot started");
+
+app.listen(3000, ()=>{
+    console.log("Server started");
+})
