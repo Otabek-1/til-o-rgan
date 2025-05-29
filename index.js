@@ -200,9 +200,16 @@ function sendWordsToUser(bot, telegram_id, lang, word_limit) {
 // Cronni shu yerda ishga tushirasan:
 // Cronni shu yerda ishga tushirasan:
 cron.schedule("* * * * *", async () => {
-    const now = new Date();
-    const hour = now.getHours().toString().padStart(2, "0");
-    const minute = now.getMinutes().toString().padStart(2, "0");
+    const formatter = new Intl.DateTimeFormat('en-GB', {
+        timeZone: 'Asia/Tashkent',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false,
+    });
+
+    const parts = formatter.formatToParts(new Date());
+    const hour = parts.find(p => p.type === 'hour').value;
+    const minute = parts.find(p => p.type === 'minute').value;
     const currentTime = `${hour}:${minute}`;
 
     try {
@@ -229,6 +236,6 @@ process.once("SIGTERM", () => bot.stop("SIGTERM"));
 
 console.log("Bot started");
 
-app.listen(8000, ()=>{
+app.listen(8000, () => {
     console.log("Server started");
 })
