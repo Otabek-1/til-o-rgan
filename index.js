@@ -229,6 +229,6 @@ process.once("SIGTERM", () => bot.stop("SIGTERM"));
 
 console.log("Bot started");
 
-app.listen(3000, ()=>{
+app.listen(8000, ()=>{
     console.log("Server started");
 })
