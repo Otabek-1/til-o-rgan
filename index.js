@@ -17,9 +17,8 @@ const bot = new Telegraf(process.env.BOT_TOKEN);
 bot.start((ctx) => {
     const user = ctx.message.from;
     ctx.reply(
-        `Salom, ${ctx.from.first_name} 👋\n<b>Til o'rgan bot</b>ga xush kelibsiz!\nO'rganmoqchi bo'lgan tilingizni tanlang:`,
+        `Salom, ${ctx.from.first_name} 👋\nTil o'rgan bot ga xush kelibsiz!\nO'rganmoqchi bo'lgan tilingizni tanlang:`,
         {
-            parse_mode: "HTML",
             reply_markup: {
                 inline_keyboard: [
                     [
