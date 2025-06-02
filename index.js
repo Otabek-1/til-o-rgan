@@ -29,21 +29,83 @@ const messageStarts = [
 bot.start(handleStart);
 bot.command("add", handleAdd);
 bot.on("text", handleText);
+bot.on("callback_query", async (ctx) => {
+  const data = ctx.callbackQuery.data;
+  const turejavoblar = ["✅ To‘g‘ri!", "✅ Qoyil, esda qolibdi!", "Malades"];
+  const xatojavoblar = ["❌ Noto‘g‘ri!", "❌ Qayta yodlash kerak", "Malades, xato❌"];
+  if (data === "true") {
+    // Foydalanuvchiga alert chiqadi
+    await ctx.answerCbQuery(turejavoblar[Math.floor(Math.random() * turejavoblar.length)], { show_alert: false });
+
+    // Istasangiz, keyingi bosqichga ham o‘tishingiz mumkin
+    // await ctx.reply("Keyingi savol: ...");
+  } else {
+    await ctx.answerCbQuery(xatojavoblar[Math.floor(Math.random() * xatojavoblar.length)], { show_alert: false });
+  }
+});
+
 
 // Botni ishga tushirish
 bot.launch().then(() => {
   console.log("🤖 Bot ishga tushdi");
   initializeUserTimeouts();
+  // sendAsTest();
 });
 
 // ========== ASOSIY FUNKSIYALAR ==========
+
+async function sendAsTest(userId) {
+  const user = await pool.query(
+    "SELECT * FROM users WHERE telegram_id = $1 AND array_length(remembering_words, 1) > 0",
+    [userId]
+  );
+
+  if (!user.rows.length) return;
+
+  const words = user.rows[0].remembering_words;
+  const selected = words[Math.floor(Math.random() * words.length)];
+  const [wordEn, wordUz] = selected.split("-");
+
+  const wrongOptions = words
+    .map(w => w.split("-")[1])
+    .filter(uz => uz !== wordUz);
+
+  let buttons;
+
+  if (wrongOptions.length > 0) {
+    const wrongWord = wrongOptions[Math.floor(Math.random() * wrongOptions.length)];
+    buttons = [
+      { text: wordUz, callback_data: "true" },
+      { text: wrongWord, callback_data: "false" },
+    ];
+
+    // Aralashtiramiz
+    for (let i = buttons.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [buttons[i], buttons[j]] = [buttons[j], buttons[i]];
+    }
+  } else {
+    buttons = [{ text: wordUz, callback_data: "true" }];
+  }
+
+  await bot.telegram.sendMessage(
+    userId,
+    `👉 ${wordEn} so‘zining tarjimasini tanlang:`,
+    {
+      reply_markup: {
+        inline_keyboard: [buttons],
+      },
+    }
+  );
+}
+
 
 async function initializeUserTimeouts() {
   try {
     const users = await pool.query(
       "SELECT telegram_id, schedule FROM users WHERE array_length(remembering_words, 1) > 0"
     );
-    
+
     for (const user of users.rows) {
       scheduleNextMessage(user.telegram_id, user.schedule);
     }
@@ -53,33 +115,35 @@ async function initializeUserTimeouts() {
 }
 
 function scheduleNextMessage(userId, delayMinutes) {
-  // Avvalgi timeoutni to'xtatamiz
   if (userTimeouts.has(userId)) {
     clearTimeout(userTimeouts.get(userId));
   }
-   const time = [1,5,10,15,20,30,45,60,70,80,100,120,150,300,600];
-  // Vaqt chegaralarini tekshiramiz (1 daqiqadan 300 daqiqagacha)
+
+  const time = [1, 5, 10, 15, 20, 30, 45, 60, 70, 80, 100, 120, 150, 300, 600];
   const validatedDelay = time[Math.floor(Math.random() * time.length)];
-  
-  // 32-bit chegarasini o'tmasligini tekshiramiz
   const delayMs = Math.min(validatedDelay * 60 * 1000, 2147483647);
 
   console.log(`[DEBUG] User ${userId} uchun yangi timeout: ${validatedDelay} daqiqa`);
 
   const timeout = setTimeout(async () => {
     try {
-      await sendWordsToUser(userId);
-      // Xabar yuborilgandan keyin yangi timeout o'rnatamiz
+      // 50% ehtimol bilan test yuboriladi, qolganida oddiy so‘zlar
+      if (Math.random() < 0.5) {
+        await sendAsTest(userId);
+      } else {
+        await sendWordsToUser(userId);
+      }
+
       scheduleNextMessage(userId, validatedDelay);
     } catch (err) {
       console.error(`Xabar yuborishda xato (${userId}):`, err);
-      // Xato bo'lsa 1 soatdan keyin qayta urinib ko'ramiz
       scheduleNextMessage(userId, 60);
     }
   }, delayMs);
-  
+
   userTimeouts.set(userId, timeout);
 }
+
 
 async function sendWordsToUser(userId) {
   const user = await pool.query(
@@ -127,7 +191,7 @@ async function handleStart(ctx) {
       await ctx.reply("✅ Xush kelibsiz! So'z qo'shish uchun /add ni bosing.");
     } else {
       await ctx.reply("✅ Qaytganingizdan xursandmiz! So'z qo'shish uchun /add ni bosing.");
-      
+
       // Agar so'zlari bo'lsa, timeoutni o'rnatamiz
       if (user.rows[0].remembering_words?.length > 0) {
         scheduleNextMessage(userId, user.rows[0].schedule);
@@ -160,17 +224,17 @@ async function handleText(ctx) {
       "UPDATE users SET remembering_words = array_append(remembering_words, $1) WHERE telegram_id = $2",
       [`${word} - ${translation}`, userId]
     );
-    
+
     // Agar bu birinchi so'z bo'lsa, timeoutni boshlaymiz
     const user = await pool.query(
       "SELECT remembering_words, schedule FROM users WHERE telegram_id = $1",
       [userId]
     );
-    
+
     if (user.rows[0].remembering_words.length === 1) {
       scheduleNextMessage(userId, user.rows[0].schedule);
     }
-    
+
     await ctx.reply(`✅ Qo'shildi: ${word} - ${translation}`);
   } catch (err) {
     console.error("ADD ERROR:", err);
