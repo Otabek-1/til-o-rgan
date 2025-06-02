@@ -48,7 +48,7 @@ bot.on("callback_query", async (ctx) => {
 // Botni ishga tushirish
 bot.launch().then(() => {
   console.log("🤖 Bot ishga tushdi");
-  initializeUserTimeouts();
+  async initializeUserTimeouts();
   // sendAsTest();
 });
 
