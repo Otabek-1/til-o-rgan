@@ -48,9 +48,9 @@ bot.on("callback_query", async (ctx) => {
 
 
 // Botni ishga tushirish
-bot.launch().then(() => {
+bot.launch().then(async () => {
   console.log("🤖 Bot ishga tushdi");
-  initializeUserTimeouts();
+  await initializeUserTimeouts();
   // sendAsTest();
 });
 
@@ -92,7 +92,7 @@ async function sendAsTest(userId) {
 
   await bot.telegram.sendMessage(
     userId,
-    `👉 ${wordEn} so‘zining tarjimasini tanlang:`,
+    `👉 ${wordEn} so‘zining tarjimasini toping:`,
     {
       reply_markup: {
         inline_keyboard: [buttons],
@@ -188,7 +188,7 @@ async function handleStart(ctx) {
     if (user.rows.length === 0) {
       await pool.query(
         "INSERT INTO users (telegram_id, remembering_words, schedule) VALUES ($1, $2, $3)",
-        [userId, [], 30] // Default: 30 daqiqa
+        [userId, [], 2] // Default: 30 daqiqa
       );
       await ctx.reply("✅ Xush kelibsiz! So'z qo'shish uchun /add ni bosing.");
     } else {
