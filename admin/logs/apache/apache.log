@@ -1,0 +1,4 @@
+[Thu Jun 05 11:00:05.771619 2025] [fcgid:info] [pid 1306320:tid 139896299673472] mod_fcgid: Process manager 1306320 started
+[Thu Jun 05 11:00:05.773413 2025] [mpm_event:notice] [pid 1306318:tid 139896299673472] AH00489: Apache/2.4.59 (Unix) mod_fcgid/2.3.9 configured -- resuming normal operations
+[Thu Jun 05 11:00:05.773484 2025] [mpm_event:info] [pid 1306318:tid 139896299673472] AH00490: Server built: May 31 2024 08:01:46
+[Thu Jun 05 11:00:05.773491 2025] [core:notice] [pid 1306318:tid 139896299673472] AH00094: Command line: '/usr/alwaysdata/apache/2.4.59/bin/apache -f /home/tilorgan/admin/config/apache/apache.conf -D FOREGROUND'

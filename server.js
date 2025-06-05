@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const pool = require("./pg");
+require("dotenv").config;
 
 const app = express();
 
@@ -60,5 +61,5 @@ app.get("/me", async (req,res)=>{
         console.log(error);
     }
 })
-
-app.listen(4444, () => console.log("Example app listening on port 4444!"));
+const PORT = process.env.PORT || 80
+app.listen(PORT, () => console.log(`Example app listening on port ${PORT}!`));

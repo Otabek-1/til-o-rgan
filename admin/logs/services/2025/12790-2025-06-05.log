@@ -1,0 +1,6 @@
+[05/Jun/2025:10:54:24 +0200] [2669875] tilorgan - service: 12790 started (command: 'npm run run' - pid: 2669875)
+[05/Jun/2025:10:54:24 +0200] [2669875] STDOUT: 
+[05/Jun/2025:10:54:24 +0200] [2669875] STDOUT: > server@1.0.0 run
+[05/Jun/2025:10:54:24 +0200] [2669875] STDOUT: > node main.js
+[05/Jun/2025:10:54:24 +0200] [2669875] STDOUT: 
+[05/Jun/2025:10:54:25 +0200] [2669875] STDOUT: Example app listening on port 80!

@@ -1,0 +1,7 @@
+[05/Jun/2025:10:46:27 +0200] [2667265] tilorgan - service: 12789 started (command: 'npm run run' - pid: 2667265)
+[05/Jun/2025:10:46:28 +0200] [2667265] STDOUT: 
+[05/Jun/2025:10:46:28 +0200] [2667265] STDOUT: > server@1.0.0 run
+[05/Jun/2025:10:46:28 +0200] [2667265] STDOUT: > node main.js
+[05/Jun/2025:10:46:28 +0200] [2667265] STDOUT: 
+[05/Jun/2025:10:46:28 +0200] [2667265] STDOUT: Example app listening on port 4444!
+[05/Jun/2025:10:54:18 +0200] [2667265] tilorgan - service: 12789 finished after 471.043 seconds (uncaught signal SIGTERM) (command: 'npm run run' - pid: 2667265)

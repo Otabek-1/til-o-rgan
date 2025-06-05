@@ -1,0 +1,2 @@
+tilorgan.alwaysdata.net 84.54.70.46 - - [05/Jun/2025:11:00:06 +0200] "GET / HTTP/2.0" 200 750 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" https 0.265597
+tilorgan.alwaysdata.net 84.54.70.46 - - [05/Jun/2025:11:04:40 +0200] "OPTIONS /auth HTTP/2.0" 502 127 "http://localhost:5173/" "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36" https 127.944804

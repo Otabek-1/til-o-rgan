@@ -1,0 +1,63 @@
+[05/Jun/2025:00:36:18 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 60 daqiqa
+[05/Jun/2025:00:46:13 +0200] [1156341] STDOUT: [DEBUG] User 5303361087 uchun yangi timeout: 30 daqiqa
+[05/Jun/2025:01:16:13 +0200] [1156341] STDOUT: [DEBUG] User 5303361087 uchun yangi timeout: 100 daqiqa
+[05/Jun/2025:01:36:19 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 15 daqiqa
+[05/Jun/2025:01:51:19 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 30 daqiqa
+[05/Jun/2025:02:21:19 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 5 daqiqa
+[05/Jun/2025:02:26:20 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 5 daqiqa
+[05/Jun/2025:02:31:20 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 1 daqiqa
+[05/Jun/2025:02:32:20 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 80 daqiqa
+[05/Jun/2025:02:56:13 +0200] [1156341] STDOUT: [DEBUG] User 5303361087 uchun yangi timeout: 10 daqiqa
+[05/Jun/2025:03:06:14 +0200] [1156341] STDOUT: [DEBUG] User 5303361087 uchun yangi timeout: 600 daqiqa
+[05/Jun/2025:03:52:20 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 20 daqiqa
+[05/Jun/2025:04:12:21 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 10 daqiqa
+[05/Jun/2025:04:22:21 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 80 daqiqa
+[05/Jun/2025:05:42:21 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 10 daqiqa
+[05/Jun/2025:05:52:22 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 80 daqiqa
+[05/Jun/2025:07:12:22 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 600 daqiqa
+[05/Jun/2025:09:28:50 +0200] [1156341] STDOUT: [DEBUG] User 8178725193 uchun yangi timeout: 30 daqiqa
+[05/Jun/2025:09:58:50 +0200] [1156341] STDOUT: [DEBUG] User 8178725193 uchun yangi timeout: 30 daqiqa
+[05/Jun/2025:10:28:50 +0200] [1156341] STDOUT: [DEBUG] User 8178725193 uchun yangi timeout: 70 daqiqa
+[05/Jun/2025:10:44:22 +0200] [1156341] tilorgan - service: 12747 restart requested
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: 🤖 Bot ishga tushdi
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 1223497947 uchun yangi timeout: 30 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 938527038 uchun yangi timeout: 20 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 1390910615 uchun yangi timeout: 60 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 5303361087 uchun yangi timeout: 1 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 7052530006 uchun yangi timeout: 5 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 5098724259 uchun yangi timeout: 45 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 7014666214 uchun yangi timeout: 300 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 7886493748 uchun yangi timeout: 60 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 1012642390 uchun yangi timeout: 15 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 587517395 uchun yangi timeout: 100 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 8178725193 uchun yangi timeout: 80 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 7724288525 uchun yangi timeout: 80 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 7848881961 uchun yangi timeout: 120 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 8150051481 uchun yangi timeout: 120 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 7557987694 uchun yangi timeout: 60 daqiqa
+[05/Jun/2025:10:44:26 +0200] [1156341] STDOUT: [DEBUG] User 6389293657 uchun yangi timeout: 5 daqiqa
+[05/Jun/2025:10:44:32 +0200] [1156341] tilorgan - service: 12747 finished after 244818.329 seconds (uncaught signal SIGTERM) (command: 'node index.js' - pid: 1156341)
+[05/Jun/2025:10:44:32 +0200] [2666263] tilorgan - service: 12747 started (command: 'node index.js' - pid: 2666263)
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR: /home/tilorgan/node_modules/telegraf/lib/core/network/client.js:315
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:             throw new error_1.default(data, { method, payload });
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:                   ^
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR: 
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     at Telegram.callApi (/home/tilorgan/node_modules/telegraf/lib/core/network/client.js:315:19)
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     at async [Symbol.asyncIterator] (/home/tilorgan/node_modules/telegraf/lib/core/network/polling.js:30:33)
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     at async Polling.loop (/home/tilorgan/node_modules/telegraf/lib/core/network/polling.js:73:30)
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     at async Telegraf.launch (/home/tilorgan/node_modules/telegraf/lib/telegraf.js:194:13) {
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:   response: {
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     ok: false,
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     error_code: 409,
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:   },
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:   on: {
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     method: 'getUpdates',
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:     payload: { timeout: 50, offset: 0, allowed_updates: [] }
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR:   }
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR: }
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR: 
+[05/Jun/2025:10:46:15 +0200] [2666263] STDERR: Node.js v20.19.0
+[05/Jun/2025:10:46:15 +0200] [2666263] tilorgan - service: 12747 finished after 102.851 seconds, exit code: 1 (command: 'node index.js' - pid: 2666263)
