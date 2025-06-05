@@ -30,6 +30,7 @@ bot.start(handleStart);
 bot.command("add", handleAdd);
 bot.command("login", handleLogin);
 bot.command("broadcast", handleBroadcast);
+bot.command("help",handleHelp);
 bot.on("text", handleText);
 bot.on("callback_query", async (ctx) => {
   const data = ctx.callbackQuery.data;
@@ -325,6 +326,43 @@ async function handleBroadcast(ctx) {
     await ctx.reply("❌ Broadcast yuborishda xatolik yuz berdi.");
   }
 }
+
+async function handleHelp(ctx) {
+  await ctx.reply(`📚 *Til O‘rgan Bot - Yordam bo‘limi*
+
+Bu bot ingliz tilini o‘rganishda sizga yordam beruvchi shaxsiy assistentdir. Quyidagi asosiy funksiyalar mavjud:
+
+🔤 *1. /add — Yangi so‘zlar qo‘shish*  
+Siz /add buyrug‘i orqali o‘zingiz uchun inglizcha so‘zlar va ularning tarjimasini qo‘shishingiz mumkin.  
+Misol: \`/add book - kitob\`
+
+📬 *2. Eslatmalar (Reminders)*  
+Qo‘shgan so‘zlaringiz sizga vaqti-vaqti bilan bot orqali yuboriladi — bu takrorlash orqali mustahkamlashga yordam beradi.
+
+🧠 *3. Vocabulary testlar*  
+Bot sizga inglizcha so‘zlarni tanlash yoki tarjimasini topish shaklida testlar yuboradi. Bu orqali o‘z bilimingizni sinab ko‘rishingiz mumkin.
+
+🔑 *4. /login — Shaxsiy kabinet ma’lumotlari*  
+Bu buyruq orqali siz login va parolingizni olasiz. Ushbu ma’lumotlar bilan siz [web dashboard](https://tilorgan.alwaysdata.net) ga kirishingiz mumkin.
+
+📊 *5. Statistika paneli*  
+Web panel orqali siz testlar natijasi, o‘zlashtirish darajasi, faol so‘zlar ro‘yxati kabi ko‘plab statistikalarni ko‘rishingiz mumkin.
+
+🛠 *6. Parolni o‘zgartirish*  
+Dashboard ichida login va parolni o‘zingiz mustaqil o‘zgartirishingiz mumkin.
+
+🚀 *7. Yangilanishlar*  
+Har safar yangi funksiyalar qo‘shilganda, bot orqali broadcast tarzida sizga bildiriladi.
+
+---
+
+❓ *Yordam kerakmi?*  
+Istalgan vaqtda /help buyrug‘ini yozing. Biz siz bilan birga ingliz tilini mustahkam o‘rganamiz! 😊
+
+🔗 Web: https://tilorgan.alwaysdata.net  
+`, { parse_mode: "Markdown" });
+}
+
 
 // ========== PROCESS HANDLERS ==========
 
