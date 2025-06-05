@@ -4,3 +4,28 @@
 [05/Jun/2025:10:54:24 +0200] [2669875] STDOUT: > node main.js
 [05/Jun/2025:10:54:24 +0200] [2669875] STDOUT: 
 [05/Jun/2025:10:54:25 +0200] [2669875] STDOUT: Example app listening on port 80!
+[05/Jun/2025:11:23:37 +0200] [2669875] tilorgan - service: 12790 restart requested
+[05/Jun/2025:11:23:38 +0200] [2669875] tilorgan - service: 12790 finished after 1754.313 seconds (uncaught signal SIGTERM) (command: 'npm run run' - pid: 2669875)
+[05/Jun/2025:11:23:39 +0200] [2679680] tilorgan - service: 12790 started (command: 'npm run run' - pid: 2679680)
+[05/Jun/2025:11:23:39 +0200] [2679680] STDOUT: 
+[05/Jun/2025:11:23:39 +0200] [2679680] STDOUT: > server@1.0.0 run
+[05/Jun/2025:11:23:39 +0200] [2679680] STDOUT: > node main.js
+[05/Jun/2025:11:23:39 +0200] [2679680] STDOUT: 
+[05/Jun/2025:11:23:39 +0200] [2679680] STDOUT: Example app listening on port 80!
+[05/Jun/2025:11:23:50 +0200] [2679680] STDOUT: [DEBUG] User 5303361087 uchun yangi timeout: 600 daqiqa
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR: Unhandled Rejection: TelegramError: 409: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     at Telegram.callApi (/home/tilorgan/node_modules/telegraf/lib/core/network/client.js:315:19)
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     at async [Symbol.asyncIterator] (/home/tilorgan/node_modules/telegraf/lib/core/network/polling.js:30:33)
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     at async Polling.loop (/home/tilorgan/node_modules/telegraf/lib/core/network/polling.js:73:30)
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     at async Telegraf.launch (/home/tilorgan/node_modules/telegraf/lib/telegraf.js:194:13) {
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:   response: {
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     ok: false,
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     error_code: 409,
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     description: 'Conflict: terminated by other getUpdates request; make sure that only one bot instance is running'
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:   },
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:   on: {
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     method: 'getUpdates',
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:     payload: { timeout: 50, offset: 545725072, allowed_updates: [] }
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR:   }
+[05/Jun/2025:11:34:35 +0200] [2679680] STDERR: }

@@ -66,3 +66,18 @@ nano server.js
 nano server.js
 npm i dotenv
 nano .env
+git add .
+git commit -m "xuyavoy xato tuzatilmadi"
+git push
+git push
+git push
+git push
+git push
+git push
+git push
+git push
+git pull
+git pull
+nano .env
+nano server.js
+nano .env

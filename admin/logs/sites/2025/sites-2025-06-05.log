@@ -36,3 +36,5 @@
 [05/Jun/2025:11:03:36 +0200] [upstream] Upstream started PID: 1315526
 [05/Jun/2025:11:03:36 +0200] [upstream] [1315526] STDOUT: Example app listening on port 80!
 [05/Jun/2025:11:03:36 +0200] [upstream] [1315526] Upstream stopped (reason: exited spontaneously with return code N/A)
+[05/Jun/2025:11:30:26 +0200] [upstream] [1306318] SIGTERM sent to upstream
+[05/Jun/2025:11:30:26 +0200] [upstream] [1306318] Upstream stopped (reason: idle)
