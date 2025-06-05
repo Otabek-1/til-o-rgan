@@ -28,6 +28,8 @@ const messageStarts = [
 // Bot komandalari
 bot.start(handleStart);
 bot.command("add", handleAdd);
+bot.command("login", handleLogin);
+bot.command("broadcast", handleBroadcast);
 bot.on("text", handleText);
 bot.on("callback_query", async (ctx) => {
   const data = ctx.callbackQuery.data;
@@ -242,6 +244,86 @@ async function handleText(ctx) {
   }
 
   userStates.awaitingAdd.delete(userId);
+}
+
+
+async function handleLogin(ctx) {
+  const userId = ctx.from.id;
+  const userInfo = await pool.query("SELECT * FROM users WHERE telegram_id = $1", [userId]);
+  const login = userInfo.rows[0].login;
+  const password = userInfo.rows[0].password;
+  if (!login || !password) {
+    const newLogin = `user${Math.floor(Math.random() * 1000000)}`;
+    const newPassword = `u${Math.floor(Math.random() * 1000000)}`;
+    await pool.query("UPDATE users SET login = $1, password = $2 WHERE telegram_id = $3", [newLogin, newPassword, userId]);
+    await ctx.reply(
+      "Sizning login va parolingiz:\n\nLogin: <code>" + newLogin + "</code>\nPassword: <code>" + newPassword + "</code>\n\nLogin va parolni web app da o'zgartirishingiz mumkin.",
+      {
+        parse_mode: "HTML"
+      }
+    );
+
+  }
+  else {
+    ctx.reply(
+      `🧾 Sizning login va parolingiz:\n\nLogin: <code>${login}</code>\nPassword: <code>${password}</code>\n\n📎 Nusxa olish uchun ustiga bosing.`,
+      { parse_mode: "HTML" }
+    );
+
+  }
+}
+
+async function handleBroadcast(ctx) {
+  const SUPERADMIN_ID = 5303361087;
+  const user = ctx.message.from;
+
+  // Faqat superadmin foydalanishi mumkin
+  if (user.id !== SUPERADMIN_ID) {
+    return ctx.reply("⛔️ Sizda ruxsat yo‘q.");
+  }
+
+  // Xabar matnini olish va tekshirish
+  const text = ctx.message.text.slice(11).trim();
+  if (!text) {
+    return ctx.reply("❗️ Xabar matni bo‘sh bo‘lmasligi kerak.");
+  }
+
+  try {
+    const users = await pool.query("SELECT telegram_id FROM users");
+    let successCount = 0;
+    let failCount = 0;
+    let failedUsers = [];
+    let sent = 0;
+
+    for (const userRow of users.rows) {
+      try {
+        await bot.telegram.sendMessage(userRow.telegram_id, text);
+        successCount++;
+      } catch (err) {
+        failCount++;
+        failedUsers.push(userRow.telegram_id);
+      }
+
+      sent++;
+      // Progress ko‘rsatish (masalan, har 20 ta yuborilganda)
+      if (sent % 20 === 0) {
+        await ctx.reply(`📢 ${sent}/${users.rows.length} foydalanuvchiga yuborildi...`);
+      }
+    }
+
+    // Yakuniy hisobot
+    let resultMsg = `✅ Xabar ${successCount} ta foydalanuvchiga muvaffaqiyatli yuborildi.`;
+    if (failCount > 0) {
+      resultMsg += `\n❌ ${failCount} ta foydalanuvchiga yuborilmadi.`;
+      if (failCount <= 20) {
+        resultMsg += `\nYuborilmadi (ID): ${failedUsers.join(', ')}`;
+      }
+    }
+    await ctx.reply(resultMsg);
+  } catch (error) {
+    console.error("Broadcast xatoligi:", error);
+    await ctx.reply("❌ Broadcast yuborishda xatolik yuz berdi.");
+  }
 }
 
 // ========== PROCESS HANDLERS ==========
