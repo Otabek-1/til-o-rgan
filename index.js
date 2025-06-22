@@ -31,6 +31,7 @@ bot.command("add", handleAdd);
 bot.command("login", handleLogin);
 bot.command("broadcast", handleBroadcast);
 bot.command("help",handleHelp);
+bot.command("admin", handleAdminContact);
 bot.on("text", handleText);
 bot.on("callback_query", async (ctx) => {
   const data = ctx.callbackQuery.data;
@@ -179,6 +180,10 @@ function getRandomWords(words, maxCount = 4) {
 }
 
 // ========== COMMAND HANDLERS ==========
+
+async function handleAdminContact(ctx){
+  ctx.reply(`Contact or support:\n@i_am_nobody2038`);
+}
 
 async function handleStart(ctx) {
   const userId = ctx.from.id;
